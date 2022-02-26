@@ -1,8 +1,38 @@
+---
+title: "a3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r, include=FALSE}
+library("knitr")
+source("analysis.R")
+```
+
 ## Introduction
 I choose to analysis how number of people in jail differs based on their genders, also  how does number of jail adim relate to jail population. Last, I analyze the jail population distributed in united states. I used variables total population in jail every year, male population in jail every year, female population in jail every year, jail admin in jail every year, and number of population in jail in each state in year 1970.
+
+I used varables to calculated that the year that the jail had the most admin is 2014, the year year that the populations in jail is highest is 2004, it had 778200 people. also, there are most male in jail in 2018, with number of 673402. The state that had most jail population is CA, lowest is AK, which makes sense since CA population ishigh. Last, 1971 had the lowest jail population.
+
 ## time trend chart
+```{r, echo=FALSE}
+line_chart
+```
+
 I included this chart because I want to see how many populations of different genders are jailed as time pass, I merged variable total_jail_pop, male_jail_pop, and female_jail_pop, which is total jail population based on time, total male population in jail based on time, and total female population in jail based on time. I found that number of male jailed are much more than female population.
+
 ## variable comparesion
+```{r, echo=FALSE}
+comparasion
+```
+
 I created a scatterplot of total jail admin vs total jail population, because I want to see if increase in number of jail population cause increase of jail admin. I summerized jail admin and total jail population beased on year, then plotted them, I found that as total jail popultion increase, jail admin increase too. they have a positive relationship to each other.
-##map
+
+## map
+```{r, echo=FALSE}
+map_chart
+```
+
 I create this map because I want see where do US keep prisoners. While AK is the state that have lowest ratio of jail population of 0.1251% out of total jail population, CA has the highest with 9.8%. I found that there are not really a pattern in this map, I think it is just based on where the jails are built.

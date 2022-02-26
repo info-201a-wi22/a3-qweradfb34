@@ -110,7 +110,7 @@ low_state_pop <- min(maps$percent)
 df1 <- merge(total,females, sort = TRUE)
 summarys <- merge(df1, males, sort = TRUE)
 
-ggplot(summarys, aes(x=year, y= total)) +
+line_chart <- ggplot(summarys, aes(x=year, y= total)) +
   geom_line(aes(y=total, color = "total")) +
   geom_line(aes(y=male, color = "male")) +
   geom_line(aes(y=female, color = "female")) +
@@ -122,7 +122,7 @@ ggplot(summarys, aes(x=year, y= total)) +
 
 df2 <- merge(total,variables, sort = TRUE)
 
-ggplot(df2, aes(x=total, y=total_adm)) + 
+comparasion <- ggplot(df2, aes(x=total, y=total_adm)) + 
   geom_point() +
   xlab("total jail population") +
   ylab("total jail admin") +
@@ -130,20 +130,7 @@ ggplot(df2, aes(x=total, y=total_adm)) +
   
 
 #map
-maps <- incarceration_trends%>%
-  filter(year == "1970") %>%
-  group_by(state) %>%
-  summarize(state_pop = sum(total_pop))
-
-total_population <- sum(maps$state_pop)
-
-maps <- maps %>%
-  mutate(percent = state_pop/total_population *100)
-
-mapdata <- map_data("state")
-mappp <- left_join(mapdata, maps, by = "region")
-
-plot_usmap(data = maps, values = "percent", color = "blue") + 
+map_chart <- plot_usmap(data = maps, values = "percent", color = "blue") + 
   scale_fill_continuous(
     low = "white", high = "blue", name = "percent of total population in jail of US(1970)", label = scales::comma
   ) + labs(title = "percentage of jail population in US") + theme(legend.position = "right")
